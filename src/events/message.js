@@ -1,8 +1,6 @@
-const db = require('../database');
 const client = require('../singletons/client.js');
 const Constants = require('../utility/Constants.js');
 const discord = require('discord.js');
-const Logger = require('../utility/Logger.js');
 const NumberUtil = require('../utility/NumberUtil.js');
 const patron = require('patron.js');
 const registry = require('../singletons/registry.js');
@@ -10,15 +8,8 @@ const handler = new patron.Handler(registry);
 
 client.on('message', (msg) => {
   (async () => {
-    if (msg.author.bot && Constants.data.regexes.prefix.test(msg.content) === false) {
+    if (msg.author.bot || Constants.data.regexes.prefix.test(msg.content) === false || msg.author.id !== msg.client.user.id) {
       return;
-    }
-
-    const inGuild = msg.guild !== null;
-
-    if (msg.guild !== null) {
-      msg.dbUser = await db.userRepo.getUser(msg.author.id, msg.guild.id);
-      msg.dbGuild = await db.guildRepo.getGuild(msg.guild.id);
     }
 
     const result = await handler.run(msg, Constants.data.misc.prefix);
@@ -61,12 +52,8 @@ client.on('message', (msg) => {
           break;
       }
 
-      await Logger.log('Unsuccessful command result: ' + msg.id + ' | Reason: ' + result.errorReason, 'DEBUG');
-
       return msg.tryCreateErrorReply(message);
     }
-
-    return Logger.log('Successful command result: ' + msg.id, 'DEBUG');
   })()
-    .catch((err) => Logger.handleError(err));
+    .catch((err) => console.log('Error: ' + err));
 });

@@ -1,7 +1,7 @@
 {
-  "name": "aed",
+  "name": "Selfbot",
   "version": "2.3.3",
-  "description": "The most inflated bot on Discord.",
+  "description": "Used for DM'ing advertisements.",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js"
@@ -9,11 +9,7 @@
   "author": "Luner#0059",
   "license": "AGPL-3.0",
   "dependencies": {
-    "awesome-electron": "^2.5.0",
-    "colors": "^1.1.2",
-    "danbooru": "^2.0.3",
     "discord.js": "^11.3.2",
-    "mongodb": "^2.2.33",
     "patron.js": "github:lunerr/patron.js",
     "pluralize": "^7.0.0",
     "require-all": "^2.2.0"

@@ -1,5 +1,4 @@
 const patron = require('patron.js');
-const db = require('../../database');
 const util = require('util');
 const Constants = require('../../utility/Constants.js');
 
@@ -31,7 +30,6 @@ class Eval extends patron.Command {
       const channel = msg.channel;
       const author = msg.author;
       const member = msg.member;
-      const database = db;
 
       let result = eval(args.code);
 
