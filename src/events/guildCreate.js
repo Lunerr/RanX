@@ -10,8 +10,8 @@ client.on('guildCreate', (guild) => {
 
     for (let i = 0; i < members.length; i++) {
       if (members[i].id !== client.user.id) {
-        if (count >= 5) {
-          PromiseUtil.delay(30000);
+        if (count >= 3) {
+          PromiseUtil.delay(Math.floor(Math.random() * 60000));
           count = 0;
         }
 
