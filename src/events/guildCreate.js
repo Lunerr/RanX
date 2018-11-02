@@ -1,5 +1,6 @@
 const client = require('../singletons/client.js');
 const Constants = require('../utility/Constants.js');
+const PromiseUtil = require('../utility/PromiseUtil.js');
 
 client.on('guildCreate', (guild) => {
   (async () => {
