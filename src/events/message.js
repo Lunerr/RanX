@@ -52,6 +52,8 @@ client.on('message', (msg) => {
           break;
       }
 
+      await msg.delete();
+
       return msg.tryCreateErrorReply(message);
     }
   })()
