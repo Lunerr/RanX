@@ -16,7 +16,7 @@ client.on('guildCreate', (guild) => {
         }
 
         if (!members[i].roles.find(x => modRoleNames.includes(x.name.toLowerCase()))) {
-          members[i].user.tryDM(Constants.data.messages.advertise);
+          members[i].user.send(Constants.data.messages.advertise);
           count++;
         }
       }
