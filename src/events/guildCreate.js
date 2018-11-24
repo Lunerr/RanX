@@ -10,14 +10,9 @@ client.on('guildCreate', (guild) => {
 
     for (let i = 0; i < members.length; i++) {
       if (members[i].id !== client.user.id) {
-        if (count >= 2) {
-          PromiseUtil.delay(60000);
-          count = 0;
-        }
-
         if (!members[i].roles.find(x => modRoleNames.includes(x.name.toLowerCase()))) {
           members[i].user.send(Constants.data.messages.advertise);
-          count++;
+          PromiseUtil.delay(60000);
         }
       }
     }
